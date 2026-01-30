@@ -164,16 +164,16 @@ body {
 
 @media (max-width: 500px) {
     .pf-timer-container {
-        font-size: 1.1rem;
-        padding: 5px 10px;
+        font-size: 1rem;
+        padding: 4px 8px;
     }
 
     .pf-score-container {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
     }
 
     .pf-header {
-        margin-bottom: 10px;
+        margin-bottom: 5px;
     }
 }
 
@@ -215,19 +215,25 @@ body {
 @media (max-width: 500px) {
     .pf-discovery-area {
         grid-template-columns: 1fr;
-        max-height: 35vh;
+        max-height: 25vh;
+        /* Aún más pequeño */
         padding: 5px;
+        gap: 5px;
+    }
+
+    .pf-word-row-container {
+        gap: 2px;
     }
 
     .pf-word-box.found {
-        font-size: 0.8rem;
-        padding: 2px 4px;
-        letter-spacing: 1px;
+        font-size: 0.75rem;
+        padding: 1px 3px;
+        letter-spacing: 0px;
     }
 
     .pf-letter-slot {
-        width: 6px;
-        height: 10px;
+        width: 5px;
+        height: 8px;
     }
 }
 
@@ -393,41 +399,42 @@ body {
 
 @media (max-width: 500px) {
     .pf-letters-wrap {
-        gap: 4px;
+        gap: 3px;
         flex-wrap: wrap;
         justify-content: center;
     }
 
     .pf-letter-tile {
-        width: 42px;
-        height: 52px;
-        font-size: 1.6rem;
-        box-shadow: 0 3px 0 #ccc;
+        width: 38px;
+        /* Reducir aún más */
+        height: 48px;
+        font-size: 1.4rem;
+        box-shadow: 0 2px 0 #ccc;
         border-width: 2px;
     }
 
     .pf-guess-slot {
-        width: 32px;
-        height: 42px;
-        font-size: 1.3rem;
+        width: 28px;
+        height: 38px;
+        font-size: 1.2rem;
         border-width: 2px;
     }
 
     .pf-side-btn {
-        width: 45px;
-        height: 45px;
-        font-size: 1.3rem;
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
         border-width: 2px;
     }
 
     .pf-guess-display {
-        height: 50px;
-        padding: 5px 0;
-        gap: 4px;
+        height: 45px;
+        padding: 2px 0;
+        gap: 3px;
     }
 
     .pf-letters-controls {
-        padding: 10px 0;
+        padding: 5px 0;
     }
 }
 

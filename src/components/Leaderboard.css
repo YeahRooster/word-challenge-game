@@ -10,10 +10,8 @@
 
 @media (max-width: 900px) {
     .leaderboard-container {
-        width: 100%;
-        max-width: 400px;
-        order: 2;
-        /* Ponerlo debajo del juego en móvil */
+        display: none;
+        /* Ocultar en móvil para dar prioridad al juego */
     }
 }
 

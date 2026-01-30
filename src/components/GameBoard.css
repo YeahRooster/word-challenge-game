@@ -43,6 +43,15 @@ body {
     padding: 20px;
 }
 
+@media (max-width: 900px) {
+    .pf-main-layout {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+        gap: 20px;
+    }
+}
+
 .game-container {
     position: relative;
     width: 750px;
@@ -57,6 +66,19 @@ body {
     flex-direction: column;
     padding: 20px;
     box-sizing: border-box;
+    transition: width 0.3s, height 0.3s;
+}
+
+@media (max-width: 800px) {
+    .game-container {
+        width: 100vw;
+        height: 100vh;
+        max-width: none;
+        min-height: 100vh;
+        border-radius: 0;
+        border: none;
+        padding: 5px;
+    }
 }
 
 .pf-input {
@@ -140,6 +162,21 @@ body {
     color: #333;
 }
 
+@media (max-width: 500px) {
+    .pf-timer-container {
+        font-size: 1.1rem;
+        padding: 5px 10px;
+    }
+
+    .pf-score-container {
+        font-size: 1.8rem;
+    }
+
+    .pf-header {
+        margin-bottom: 10px;
+    }
+}
+
 /* Discovery Grid */
 .pf-discovery-area {
     flex: 1;
@@ -173,6 +210,25 @@ body {
     flex-wrap: wrap;
     gap: 8px;
     margin-bottom: 10px;
+}
+
+@media (max-width: 500px) {
+    .pf-discovery-area {
+        grid-template-columns: 1fr;
+        max-height: 35vh;
+        padding: 5px;
+    }
+
+    .pf-word-box.found {
+        font-size: 0.8rem;
+        padding: 2px 4px;
+        letter-spacing: 1px;
+    }
+
+    .pf-letter-slot {
+        width: 6px;
+        height: 10px;
+    }
 }
 
 .pf-word-box {
@@ -333,6 +389,46 @@ body {
 .pf-letters-wrap {
     display: flex;
     gap: 12px;
+}
+
+@media (max-width: 500px) {
+    .pf-letters-wrap {
+        gap: 4px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .pf-letter-tile {
+        width: 42px;
+        height: 52px;
+        font-size: 1.6rem;
+        box-shadow: 0 3px 0 #ccc;
+        border-width: 2px;
+    }
+
+    .pf-guess-slot {
+        width: 32px;
+        height: 42px;
+        font-size: 1.3rem;
+        border-width: 2px;
+    }
+
+    .pf-side-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+        border-width: 2px;
+    }
+
+    .pf-guess-display {
+        height: 50px;
+        padding: 5px 0;
+        gap: 4px;
+    }
+
+    .pf-letters-controls {
+        padding: 10px 0;
+    }
 }
 
 .pf-letter-tile {
@@ -534,4 +630,26 @@ body {
     font-weight: 900;
     cursor: pointer;
     box-shadow: 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 500px) {
+    .pf-overlay h2 {
+        font-size: 2.5rem;
+        text-align: center;
+        padding: 0 10px;
+    }
+
+    .pf-overlay p {
+        font-size: 1.5rem;
+    }
+
+    .pf-restart-btn {
+        font-size: 1.5rem;
+        padding: 10px 30px;
+    }
+
+    .pf-input {
+        width: 80%;
+        font-size: 1rem;
+    }
 }

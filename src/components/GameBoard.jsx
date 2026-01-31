@@ -67,11 +67,18 @@ function GameBoard() {
     useEffect(() => {
         if (gameStatus === 'playing' && timeLeft > 0 && !isPaused) {
             const timer = setInterval(() => {
-                setTimeLeft(prev => prev - 1);
+                const nextTime = timeLeft - 1;
+                setTimeLeft(nextTime);
+
+                // Sonido de tic-tac en los últimos 10 segundos
+                if (nextTime <= 10 && nextTime > 0) {
+                    soundManager.playTick();
+                }
             }, 1000);
             return () => clearInterval(timer);
         } else if (timeLeft === 0 && gameStatus === 'playing') {
             setGameStatus('finished');
+            soundManager.playGameOver();
 
             // Usar el username actual o recuperarlo de localStorage como respaldo
             const finalUsername = username.trim() || getCurrentUser() || "Jugador";

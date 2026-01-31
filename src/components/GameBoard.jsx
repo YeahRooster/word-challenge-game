@@ -78,7 +78,7 @@ function GameBoard() {
             const updatedScores = saveScore(finalUsername, score);
             setTopScores(updatedScores);
         }
-    }, [timeLeft, gameStatus, username, score]);
+    }, [timeLeft, gameStatus, username, score, isPaused]);
 
     const handleShuffle = () => {
         setIsShuffling(true);

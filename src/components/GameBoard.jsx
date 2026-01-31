@@ -28,6 +28,8 @@ function GameBoard() {
     const [lastWordFound, setLastWordFound] = useState("");
     const [isShuffling, setIsShuffling] = useState(false);
     const [showConfetti, setShowConfetti] = useState(false);
+    const [isMuted, setIsMuted] = useState(false);
+    const [volume, setVolume] = useState(0.015);
 
     // Cargar usuario y ranking inicial
     useEffect(() => {
@@ -66,12 +68,20 @@ function GameBoard() {
     // Timer
     useEffect(() => {
         if (gameStatus === 'playing' && timeLeft > 0 && !isPaused) {
+            // Iniciar música si queda más de 10 segundos
+            if (timeLeft > 10) {
+                soundManager.startBGM();
+            } else {
+                soundManager.stopBGM();
+            }
+
             const timer = setInterval(() => {
                 const nextTime = timeLeft - 1;
                 setTimeLeft(nextTime);
 
                 // Sonido de tic-tac en los últimos 10 segundos
                 if (nextTime <= 10 && nextTime > 0) {
+                    soundManager.stopBGM();
                     soundManager.playTick();
                 }
             }, 1000);
@@ -86,6 +96,17 @@ function GameBoard() {
             setTopScores(updatedScores);
         }
     }, [timeLeft, gameStatus, username, score, isPaused]);
+
+    const handleVolumeChange = (e) => {
+        const val = parseFloat(e.target.value);
+        setVolume(val);
+        soundManager.setMusicVolume(val);
+    };
+
+    const toggleMute = () => {
+        const muted = soundManager.toggleMusicMute();
+        setIsMuted(muted);
+    };
 
     const handleShuffle = () => {
         setIsShuffling(true);
@@ -222,7 +243,11 @@ function GameBoard() {
 
     const handlePause = () => {
         if (gameStatus === 'playing') {
-            setIsPaused(!isPaused);
+            const newPausedState = !isPaused;
+            setIsPaused(newPausedState);
+            if (newPausedState) {
+                soundManager.stopBGM();
+            }
         }
     };
 
@@ -268,6 +293,21 @@ function GameBoard() {
                     </div>
                     <div className="pf-score-container">
                         {score}
+                    </div>
+                    <div className="pf-audio-controls">
+                        <button className="pf-mute-btn" onClick={toggleMute} title="Silenciar Música">
+                            {isMuted ? '🔇' : '🔊'}
+                        </button>
+                        <input
+                            type="range"
+                            min="0"
+                            max="0.05"
+                            step="0.005"
+                            value={volume}
+                            onChange={handleVolumeChange}
+                            className="pf-volume-slider"
+                            title="Volumen Música"
+                        />
                     </div>
                 </div>
 

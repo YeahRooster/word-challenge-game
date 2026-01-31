@@ -1,6 +1,9 @@
 class SoundManager {
     constructor() {
         this.audioCtx = null;
+        this.bgmInterval = null;
+        this.musicVolume = 0.015;
+        this.isMusicMuted = false;
     }
 
     init() {
@@ -90,6 +93,59 @@ class SoundManager {
         osc2.start();
         osc1.stop(this.audioCtx.currentTime + 1.0);
         osc2.stop(this.audioCtx.currentTime + 1.0);
+    }
+
+    startBGM() {
+        this.init();
+        if (this.bgmInterval) return;
+
+        // Notas más alegres y agudas (C Major / G Major mix)
+        const notes = [523.25, 587.33, 659.25, 698.46, 783.99, 880.00, 987.77, 1046.50];
+        let step = 0;
+
+        this.bgmInterval = setInterval(() => {
+            if (this.isMusicMuted || this.musicVolume <= 0) return;
+
+            const osc = this.audioCtx.createOscillator();
+            const gain = this.audioCtx.createGain();
+
+            // Patrón rítmico: alternar entre nota de base y melodía
+            const freq = (step % 4 === 0)
+                ? notes[0] // Tónica
+                : notes[Math.floor(Math.random() * notes.length)];
+
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(freq, this.audioCtx.currentTime);
+
+            // Ataque más rápido y decaimiento más "saltarín"
+            gain.gain.setValueAtTime(0, this.audioCtx.currentTime);
+            gain.gain.linearRampToValueAtTime(this.musicVolume, this.audioCtx.currentTime + 0.05);
+            gain.gain.exponentialRampToValueAtTime(0.0001, this.audioCtx.currentTime + 0.4);
+
+            osc.connect(gain);
+            gain.connect(this.audioCtx.destination);
+
+            osc.start();
+            osc.stop(this.audioCtx.currentTime + 0.5);
+
+            step++;
+        }, 350); // Tempo más rápido para mayor alegría
+    }
+
+    stopBGM() {
+        if (this.bgmInterval) {
+            clearInterval(this.bgmInterval);
+            this.bgmInterval = null;
+        }
+    }
+
+    setMusicVolume(value) {
+        this.musicVolume = parseFloat(value);
+    }
+
+    toggleMusicMute() {
+        this.isMusicMuted = !this.isMusicMuted;
+        return this.isMusicMuted;
     }
 }
 

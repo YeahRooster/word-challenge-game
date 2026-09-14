@@ -672,6 +672,24 @@ body {
     box-shadow: 0 10px 0 rgba(0, 0, 0, 0.2);
 }
 
+.pf-hub-return-btn {
+    background: #0284c7;
+    color: white;
+    border: 3px solid #333;
+    border-radius: 40px;
+    padding: 8px 14px;
+    font-weight: 900;
+    cursor: pointer;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.1);
+    transition: transform 0.1s;
+}
+
+.pf-hub-return-btn:hover {
+    transform: scale(1.05);
+    background: #0369a1;
+}
+
 @media (max-width: 500px) {
     .pf-overlay h2 {
         font-size: 2.5rem;

@@ -1,0 +1,291 @@
+/* ESTILOS ARCADE HUB - PLAYFISH */
+
+.arcade-hub-viewport {
+    position: relative;
+    width: 100vw;
+    min-height: 100vh;
+    background: radial-gradient(circle at 50% 30%, #74c7ef 0%, #5bb4e5 100%);
+    font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 15px;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    user-select: none;
+}
+
+.arcade-clouds-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.arcade-cloud {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 100px;
+}
+
+.ac-1 {
+    width: 320px;
+    height: 100px;
+    top: 10%;
+    left: 5%;
+    animation: hubFloat 35s linear infinite alternate;
+}
+
+.ac-2 {
+    width: 450px;
+    height: 130px;
+    bottom: 12%;
+    right: 5%;
+    animation: hubFloat 45s linear infinite alternate-reverse;
+}
+
+.ac-3 {
+    width: 250px;
+    height: 80px;
+    top: 45%;
+    right: 15%;
+    animation: hubFloat 25s ease-in-out infinite alternate;
+}
+
+@keyframes hubFloat {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(60px); }
+}
+
+.arcade-hub-container {
+    position: relative;
+    z-index: 10;
+    max-width: 960px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Header */
+.arcade-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 35px;
+    text-align: center;
+}
+
+.arcade-badge {
+    background: #f58220;
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 900;
+    padding: 6px 20px;
+    border-radius: 20px;
+    letter-spacing: 2px;
+    box-shadow: 0 4px 12px rgba(245, 130, 32, 0.4);
+    border: 2px solid #ffffff;
+    margin-bottom: 10px;
+}
+
+.arcade-title {
+    margin: 0;
+    font-size: 3.6rem;
+    font-weight: 900;
+    color: #ffffff;
+    text-shadow: 0 4px 0 #1b6391, 0 8px 25px rgba(0, 0, 0, 0.2);
+    letter-spacing: -1px;
+}
+
+.arcade-subtitle {
+    margin: 8px 0 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #f0f9ff;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+/* Grid de Tarjetas */
+.arcade-games-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 35px;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.arcade-card {
+    position: relative;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(12px);
+    border: 5px solid #ffffff;
+    border-radius: 36px;
+    padding: 35px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.14);
+    transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.25s;
+}
+
+.arcade-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.22);
+}
+
+.card-ribbon {
+    position: absolute;
+    top: 18px;
+    right: -10px;
+    color: #ffffff;
+    font-weight: 900;
+    font-size: 0.85rem;
+    padding: 6px 16px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.18);
+    transform: rotate(6deg);
+    border: 2px solid #ffffff;
+}
+
+.ribbon-yellow {
+    background: #f59e0b;
+}
+
+.ribbon-green {
+    background: #10b981;
+}
+
+.card-icon-wrap {
+    width: 90px;
+    height: 90px;
+    border-radius: 26px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 18px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-word .card-icon-wrap {
+    background: linear-gradient(135deg, #fef08a 0%, #facc15 100%);
+    border: 3px solid #eab308;
+}
+
+.card-geo .card-icon-wrap {
+    background: linear-gradient(135deg, #bae6fd 0%, #38bdf8 100%);
+    border: 3px solid #0284c7;
+}
+
+.card-giant-icon {
+    font-size: 3.4rem;
+}
+
+.card-game-title {
+    margin: 0;
+    font-size: 2.1rem;
+    font-weight: 900;
+    color: #1e293b;
+    letter-spacing: -0.5px;
+}
+
+.card-game-tag {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 4px 0 14px;
+}
+
+.card-game-desc {
+    color: #475569;
+    font-size: 1.05rem;
+    line-height: 1.5;
+    margin: 0 0 20px;
+    font-weight: 600;
+    flex-grow: 1;
+}
+
+.card-features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.card-features span {
+    background: #f1f5f9;
+    color: #334155;
+    font-size: 0.85rem;
+    font-weight: 800;
+    padding: 6px 12px;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+}
+
+.card-play-btn {
+    width: 100%;
+    padding: 16px 24px;
+    border: 4px solid #ffffff;
+    border-radius: 25px;
+    font-family: inherit;
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: #ffffff;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18), inset 0 3px 0 rgba(255,255,255,0.4);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+    transition: transform 0.15s, filter 0.15s;
+}
+
+.btn-play-word {
+    background: linear-gradient(180deg, #f58220 0%, #d8680c 100%);
+}
+
+.btn-play-geo {
+    background: linear-gradient(180deg, #10b981 0%, #059669 100%);
+}
+
+.card-play-btn:hover {
+    transform: scale(1.04);
+    filter: brightness(1.08);
+}
+
+.arcade-footer {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 1rem;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .arcade-title {
+        font-size: 2.4rem;
+    }
+
+    .arcade-games-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .arcade-card {
+        padding: 25px 20px;
+    }
+
+    .card-game-title {
+        font-size: 1.8rem;
+    }
+
+    .card-play-btn {
+        font-size: 1.15rem;
+        padding: 14px 18px;
+    }
+}

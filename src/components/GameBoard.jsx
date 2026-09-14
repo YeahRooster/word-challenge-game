@@ -8,7 +8,7 @@ import './GameBoard.css';
 
 const INITIAL_TIME = 90; // 1:30
 
-function GameBoard() {
+function GameBoard({ onBackToHub }) {
     const [letters, setLetters] = useState([]);
     const [shuffledLetters, setShuffledLetters] = useState([]);
     const [possibleWords, setPossibleWords] = useState({ 3: [], 4: [], 5: [], 6: [] });
@@ -290,6 +290,15 @@ function GameBoard() {
                         <button className={`pf-pause-btn ${isPaused ? 'paused' : ''}`} onClick={handlePause}>
                             {isPaused ? "▶️ CONTINUAR" : "⏸️ PAUSA"}
                         </button>
+                        {onBackToHub && (
+                            <button
+                                className="pf-hub-return-btn"
+                                onClick={() => { soundManager.stopBGM(); onBackToHub(); }}
+                                title="Volver al Menú Arcade"
+                            >
+                                🏠 MENÚ
+                            </button>
+                        )}
                     </div>
                     <div className="pf-score-container">
                         {score}
@@ -398,9 +407,20 @@ function GameBoard() {
                                 </div>
                             </div>
                         </div>
-                        <button className="pf-restart-btn" onClick={() => setGameStatus('login')}>
-                            ¡OTRA VEZ!
-                        </button>
+                        <div style={{ display: 'flex', gap: '15px', flexWrap: 'wrap', justifyContent: 'center' }}>
+                            <button className="pf-restart-btn" onClick={() => setGameStatus('login')}>
+                                ¡OTRA VEZ!
+                            </button>
+                            {onBackToHub && (
+                                <button
+                                    className="pf-restart-btn pf-hub-btn-over"
+                                    onClick={() => { soundManager.stopBGM(); onBackToHub(); }}
+                                    style={{ background: '#3b82f6' }}
+                                >
+                                    🏠 MENÚ
+                                </button>
+                            )}
+                        </div>
                     </div>
                 )}
             </div>

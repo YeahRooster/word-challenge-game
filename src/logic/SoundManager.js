@@ -41,12 +41,13 @@ class SoundManager {
         osc.frequency.linearRampToValueAtTime(110, this.audioCtx.currentTime + 0.2);
 
         gain.gain.setValueAtTime(0.1, this.audioCtx.currentTime);
-        gain.gain.linearRampToValueAtTime(0.01, this.audioCtx.currentTime + 0.3);
+        gain.gain.exponentialRampToValueAtTime(0.0001, this.audioCtx.currentTime + 0.3);
 
         osc.connect(gain);
         gain.connect(this.audioCtx.destination);
 
         osc.start();
+        osc.stop(this.audioCtx.currentTime + 0.3);
     }
 
     async playTick() {
@@ -99,7 +100,7 @@ class SoundManager {
         this.init();
         if (this.bgmInterval) return;
 
-        // Notas más alegres y agudas (C Major / G Major mix)
+        // Notas alegres en escala de Do Mayor (C5 a C6)
         const notes = [523.25, 587.33, 659.25, 698.46, 783.99, 880.00, 987.77, 1046.50];
         let step = 0;
 
@@ -109,27 +110,26 @@ class SoundManager {
             const osc = this.audioCtx.createOscillator();
             const gain = this.audioCtx.createGain();
 
-            // Patrón rítmico: alternar entre nota de base y melodía
-            const freq = (step % 4 === 0)
-                ? notes[0] // Tónica
-                : notes[Math.floor(Math.random() * notes.length)];
+            // Melodía más estructurada y alegre
+            const melody = [0, 4, 7, 4, 2, 5, 9, 5]; // Patrón de arpegio alegre
+            const freq = notes[melody[step % melody.length]];
 
-            osc.type = 'sine';
+            osc.type = 'triangle'; // Sonido más cálido y menos "zumbante" que sine
             osc.frequency.setValueAtTime(freq, this.audioCtx.currentTime);
 
-            // Ataque más rápido y decaimiento más "saltarín"
+            // Envolvente de sonido "Pluck" (punteado) muy suave
             gain.gain.setValueAtTime(0, this.audioCtx.currentTime);
-            gain.gain.linearRampToValueAtTime(this.musicVolume, this.audioCtx.currentTime + 0.05);
-            gain.gain.exponentialRampToValueAtTime(0.0001, this.audioCtx.currentTime + 0.4);
+            gain.gain.linearRampToValueAtTime(this.musicVolume, this.audioCtx.currentTime + 0.02);
+            gain.gain.exponentialRampToValueAtTime(0.0001, this.audioCtx.currentTime + 0.35);
 
             osc.connect(gain);
             gain.connect(this.audioCtx.destination);
 
             osc.start();
-            osc.stop(this.audioCtx.currentTime + 0.5);
+            osc.stop(this.audioCtx.currentTime + 0.4);
 
             step++;
-        }, 350); // Tempo más rápido para mayor alegría
+        }, 400); // Ritmo alegre y constante
     }
 
     stopBGM() {

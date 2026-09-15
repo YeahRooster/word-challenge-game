@@ -1067,67 +1067,328 @@
     color: #ffffff;
 }
 
-/* --- RESPONSIVE / ADAPTACIÓN MÓVIL --- */
+/* --- RESPONSIVE / ADAPTACIÓN MÓVIL PROFUNDA --- */
 @media (max-width: 900px) {
     .geo-friends-sidebar {
         display: none; /* Ocultar amigos en pantallas angostas para centrar el juego */
     }
 
     .geo-hud-header {
-        left: 15px;
-        right: 15px;
+        left: 12px;
+        right: 12px;
+        top: 10px;
     }
 
     .geo-active-minigame {
-        left: 15px;
-        right: 15px;
-        top: 85px;
+        left: 10px;
+        right: 10px;
+        top: 80px;
+        bottom: 50px;
     }
 
+    .geo-corner-badge {
+        display: none; /* Ocultar badge angular en móvil para no tapar botones */
+    }
+}
+
+@media (max-width: 600px) {
+    /* Header compacto para celulares */
+    .geo-hud-header {
+        left: 8px;
+        right: 8px;
+        top: 8px;
+        gap: 6px;
+    }
+
+    .geo-trophy-card {
+        padding: 4px 12px 4px 8px;
+        border-radius: 25px;
+        border-width: 3px;
+        gap: 6px;
+    }
+
+    .geo-trophy-icon {
+        font-size: 1.6rem;
+    }
+
+    .geo-score-value {
+        font-size: 1.5rem;
+    }
+
+    .geo-combo-popup {
+        font-size: 1.3rem;
+        bottom: -22px;
+        left: 30px;
+    }
+
+    .geo-speedo-container {
+        padding: 4px 12px 4px 8px;
+        border-radius: 25px;
+        gap: 8px;
+    }
+
+    .geo-speedo-dial {
+        width: 34px;
+        height: 34px;
+        border-width: 2px;
+    }
+
+    .geo-speedo-needle {
+        height: 14px;
+        bottom: 17px;
+        left: 15px;
+    }
+
+    .geo-speedo-center-cap {
+        width: 6px;
+        height: 6px;
+        top: 14px;
+        left: 14px;
+    }
+
+    .geo-fuel-track {
+        width: 55px;
+        height: 12px;
+    }
+
+    .geo-speedo-digits {
+        font-size: 1.6rem;
+        min-width: 30px;
+    }
+
+    /* Área activa de minijuegos */
+    .geo-active-minigame {
+        top: 75px;
+        bottom: 48px;
+        padding: 4px;
+    }
+
+    .geo-prompt-container {
+        margin-bottom: 14px;
+    }
+
+    .geo-country-pill {
+        font-size: 1.35rem;
+        padding: 6px 20px;
+        border-radius: 25px;
+        border-width: 3px;
+        max-width: 90vw;
+        box-sizing: border-box;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .capital-prompt-pill {
+        font-size: 1.15rem;
+        padding: 6px 14px;
+    }
+
+    .geo-pill-flag-thumb {
+        width: 28px;
+        height: 18px;
+    }
+
+    /* Minijuego 1: Banderas */
+    .geo-flags-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        width: 100%;
+        max-width: 380px;
+        padding: 0 4px;
+        box-sizing: border-box;
+    }
+
+    .geo-flag-btn {
+        height: 75px;
+        border-radius: 16px;
+        border-width: 3px;
+    }
+
+    .geo-flag-inner {
+        border-radius: 13px;
+    }
+
+    /* Minijuego 2: Siluetas */
     .geo-border-content-row {
         flex-direction: column;
-        gap: 15px;
+        gap: 12px;
+        align-items: center;
+        width: 100%;
     }
 
     .geo-silhouette-card {
         width: 240px;
-        height: 200px;
-        padding: 10px;
+        height: 170px;
+        padding: 8px;
+        border-radius: 24px;
+        border-width: 4px;
     }
 
+    /* En celulares, 4 botones se acomodan en 2x2 para no desbordar verticalmente */
     .geo-options-column {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
         width: 100%;
-        max-width: 320px;
-        gap: 10px;
+        max-width: 350px;
     }
 
     .geo-color-btn {
-        padding: 10px 16px;
+        padding: 10px 8px;
+        font-size: 1.1rem;
+        border-radius: 20px;
+        border-width: 3px;
+    }
+
+    /* Minijuego 3: Capitales */
+    .geo-capitals-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        width: 100%;
+        max-width: 350px;
+    }
+
+    .capital-btn {
+        padding: 14px 10px;
+        font-size: 1.15rem;
+        border-radius: 20px;
+    }
+
+    /* Botones de control inferiores */
+    .geo-bottom-controls {
+        bottom: 8px;
+        right: 10px;
+        gap: 6px;
+    }
+
+    .geo-pause-gear-btn,
+    .geo-hub-return-btn {
+        padding: 5px 12px;
+        font-size: 0.8rem;
+        border-radius: 20px;
+        border-width: 2px;
+    }
+
+    /* Feedback visual más compacto */
+    .geo-big-checkmark {
+        font-size: 7.5rem;
+    }
+
+    .geo-big-cross {
+        font-size: 6.5rem;
+    }
+
+    /* Pantalla de Selección de Modos */
+    .geo-menu-screen {
+        padding: 12px;
+        box-sizing: border-box;
+    }
+
+    .geo-menu-card {
+        padding: 20px 16px;
+        border-radius: 26px;
+        border-width: 4px;
+        max-height: 94vh;
+        overflow-y: auto;
+        width: 96%;
+    }
+
+    .geo-globe-icon {
+        font-size: 2.6rem;
+    }
+
+    .geo-logo-banner h1 {
+        font-size: 2rem;
+    }
+
+    .geo-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .geo-welcome-msg {
+        font-size: 0.95rem;
+        margin: 6px 0 14px;
+    }
+
+    .geo-modes-selection {
+        gap: 9px;
+    }
+
+    .geo-mode-btn {
+        padding: 9px 12px;
+        border-radius: 16px;
+        gap: 10px;
+    }
+
+    .mode-emoji {
+        font-size: 1.8rem;
+    }
+
+    .mode-details strong {
+        font-size: 1.05rem;
+    }
+
+    .mode-details small {
+        font-size: 0.78rem;
+    }
+
+    .geo-back-hub-btn {
+        margin-top: 14px;
+        padding: 8px 18px;
+        font-size: 0.95rem;
+    }
+
+    /* Modal de Game Over en celular */
+    .geo-modal-backdrop {
+        padding: 12px;
+        box-sizing: border-box;
+    }
+
+    .geo-gameover-card {
+        padding: 20px 14px;
+        border-radius: 26px;
+        border-width: 4px;
+        max-height: 92vh;
+        overflow-y: auto;
+        width: 96%;
+    }
+
+    .geo-modal-medal {
+        font-size: 2.2rem;
+    }
+
+    .geo-modal-ribbon h2 {
+        font-size: 2.2rem;
+    }
+
+    .geo-modal-subtitle {
+        font-size: 1.05rem;
+        margin: 4px 0 12px;
+    }
+
+    .geo-score-number {
+        font-size: 2.2rem;
+    }
+
+    .geo-modal-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6px;
+        margin-bottom: 12px;
+    }
+
+    .stat-val {
         font-size: 1.25rem;
     }
 
-    .geo-flags-grid {
-        gap: 12px;
+    .geo-modal-actions {
+        flex-direction: column;
+        gap: 8px;
+        width: 100%;
     }
 
-    .geo-flag-btn {
-        height: 85px;
-        border-radius: 18px;
-    }
-
-    .geo-country-pill {
-        font-size: 1.6rem;
-        padding: 8px 24px;
-    }
-
-    .geo-corner-badge {
-        display: none; /* Ocultar badge angular en móvil para que no tape botones */
-    }
-
-    .geo-pause-gear-btn {
-        bottom: 10px;
-        right: 15px;
-        padding: 6px 14px;
-        font-size: 0.85rem;
+    .geo-action-btn {
+        width: 100%;
+        padding: 10px;
+        font-size: 0.95rem;
     }
 }

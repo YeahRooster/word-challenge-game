@@ -295,3 +295,91 @@
         padding: 14px 18px;
     }
 }
+
+@media (max-width: 480px) {
+    .arcade-hub-viewport {
+        padding: 16px 10px;
+    }
+
+    .arcade-header {
+        margin-bottom: 22px;
+    }
+
+    .arcade-badge {
+        font-size: 0.8rem;
+        padding: 4px 14px;
+        letter-spacing: 1px;
+    }
+
+    .arcade-title {
+        font-size: 2.05rem;
+        letter-spacing: -0.5px;
+    }
+
+    .arcade-subtitle {
+        font-size: 0.95rem;
+        margin-top: 4px;
+        padding: 0 5px;
+    }
+
+    .arcade-games-grid {
+        gap: 18px;
+    }
+
+    .arcade-card {
+        padding: 20px 14px;
+        border-radius: 28px;
+        border-width: 4px;
+    }
+
+    .card-image-banner {
+        height: 155px;
+        border-radius: 20px;
+        margin-bottom: 14px;
+    }
+
+    .card-game-title {
+        font-size: 1.65rem;
+    }
+
+    .card-game-tag {
+        font-size: 0.82rem;
+        margin: 2px 0 10px;
+    }
+
+    .card-game-desc {
+        font-size: 0.92rem;
+        margin-bottom: 15px;
+        line-height: 1.4;
+    }
+
+    .card-features {
+        gap: 6px;
+        margin-bottom: 18px;
+    }
+
+    .card-features span {
+        font-size: 0.75rem;
+        padding: 4px 8px;
+        border-radius: 8px;
+    }
+
+    .card-play-btn {
+        font-size: 1.1rem;
+        padding: 13px 16px;
+        border-radius: 20px;
+    }
+
+    .card-ribbon {
+        font-size: 0.75rem;
+        padding: 4px 10px;
+        top: 12px;
+        right: -6px;
+    }
+
+    .arcade-footer {
+        font-size: 0.85rem;
+        text-align: center;
+        padding: 0 10px;
+    }
+}

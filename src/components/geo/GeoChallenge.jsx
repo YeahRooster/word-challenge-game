@@ -281,7 +281,7 @@ function GeoChallenge({ onBackToHub }) {
                         </div>
 
                         <button className="geo-back-hub-btn" onClick={onBackToHub}>
-                            ⬅️ Volver al Menú Principal
+                            🏠 Volver al Menú Arcade
                         </button>
                     </div>
                 </div>
@@ -298,6 +298,7 @@ function GeoChallenge({ onBackToHub }) {
                         initialTime={ROUND_TIME}
                         isPaused={status === 'paused'}
                         onPauseToggle={handlePauseToggle}
+                        onBackToHub={onBackToHub}
                         friends={DEFAULT_FRIENDS_LEADERBOARD}
                     />
 

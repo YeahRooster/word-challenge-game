@@ -161,25 +161,31 @@
     background: #10b981;
 }
 
-.card-icon-wrap {
-    width: 90px;
-    height: 90px;
+.card-image-banner {
+    width: 100%;
+    height: 190px;
     border-radius: 26px;
+    background: radial-gradient(circle, #ffffff 60%, #f0f9ff 100%);
+    border: 3px solid rgba(255, 255, 255, 0.8);
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 18px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
-.card-word .card-icon-wrap {
-    background: linear-gradient(135deg, #fef08a 0%, #facc15 100%);
-    border: 3px solid #eab308;
+.card-banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 10px;
+    box-sizing: border-box;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.card-geo .card-icon-wrap {
-    background: linear-gradient(135deg, #bae6fd 0%, #38bdf8 100%);
-    border: 3px solid #0284c7;
+.arcade-card:hover .card-banner-img {
+    transform: scale(1.08);
 }
 
 .card-giant-icon {

@@ -1,6 +1,6 @@
 import React from 'react';
 
-function GeoHUD({ score, comboPoints, timeLeft, initialTime = 50, isPaused, onPauseToggle, friends = [] }) {
+function GeoHUD({ score, comboPoints, timeLeft, initialTime = 50, isPaused, onPauseToggle, onBackToHub, friends = [] }) {
     // Porcentaje de tiempo restante para la barra de combustible
     const timePercent = Math.max(0, Math.min(100, (timeLeft / initialTime) * 100));
     const isUrgent = timeLeft <= 10;
@@ -74,15 +74,28 @@ function GeoHUD({ score, comboPoints, timeLeft, initialTime = 50, isPaused, onPa
                 </div>
             </aside>
 
-            {/* --- BOTÓN DE PAUSA (Engranaje) --- */}
-            <button
-                className="geo-pause-gear-btn"
-                onClick={onPauseToggle}
-                title={isPaused ? "Reanudar" : "Pausar"}
-            >
-                <span className="geo-gear-icon">⚙️</span>
-                <span className="geo-gear-text">{isPaused ? "REANUDAR" : "PAUSE"}</span>
-            </button>
+            {/* --- BOTONES INFERIORES: PAUSA Y MENÚ ARCADE --- */}
+            <div className="geo-bottom-controls">
+                <button
+                    className="geo-pause-gear-btn"
+                    onClick={onPauseToggle}
+                    title={isPaused ? "Reanudar" : "Pausar"}
+                >
+                    <span className="geo-gear-icon">⚙️</span>
+                    <span className="geo-gear-text">{isPaused ? "REANUDAR" : "PAUSE"}</span>
+                </button>
+
+                {onBackToHub && (
+                    <button
+                        className="geo-hub-return-btn"
+                        onClick={onBackToHub}
+                        title="Volver al Menú Principal"
+                    >
+                        <span className="geo-gear-icon">🏠</span>
+                        <span className="geo-gear-text">MENÚ</span>
+                    </button>
+                )}
+            </div>
         </>
     );
 }

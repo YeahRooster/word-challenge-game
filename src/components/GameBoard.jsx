@@ -275,6 +275,15 @@ function GameBoard({ onBackToHub }) {
                                 required
                             />
                             <button type="submit" className="pf-restart-btn">¡JUGAR!</button>
+                            {onBackToHub && (
+                                <button
+                                    type="button"
+                                    className="pf-login-back-btn"
+                                    onClick={() => { soundManager.stopBGM(); onBackToHub(); }}
+                                >
+                                    ⬅️ Volver al Menú Principal
+                                </button>
+                            )}
                         </form>
                     </div>
                 )}
